@@ -24,40 +24,45 @@ Things you may want to cover:
 * ...
 
 
-## users テーブル
+## users テーブル　出品者情報を保存するデータ
+
+| Column     | Type   | Options     |
+| --------   | ------ | ----------- |
+| first-name | string | null: false |
+| family-name| string | null: false |
+| email      | string | null: false |
+| password   | string | null: false |
+
+### Association
+- has_many :item
+- has_many :adress
+
+## items テーブル 商品の情報を保存するデータ
+
 | Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| name     | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
-| log      | string | null: false |
-| adress   | string | null: false |
-| born     | string | null: false |
+| ------   | ------ | ----------- |
+| item     | string | null: false |
+| price    | string | null: false |
+| photo    | string | null: false |
+| commennt | string | null: false |
+| fovorite | string | null: false |
 
 ### Association
-- has_many :item_users
-- has_many :item, through: item_users
+- has_many :user
+- has_many :adress
 
-## items テーブル
+## adress テーブル　購入者情報を保存するデータ
 
-| Column | Type   | Options     |
-| ------ | ------ | ----------- |
-| item   | string | null: false |
-| price  | string | null: false |
-| photo  | string | null: false |
-
-### Association
-- has_many :item_users
-- has_many :user, through: item_users
-
-## item_users テーブル
-
-| Column  | Type    | Options                        |
-| ------- | ------- | ------------------------------ |
-| user_id | references | null: false, foreign_key: true |
-| item_id | references | null: false, foreign_key: true |
+| Column     | Type   | Options     |
+| --------   | ------ | ----------- |
+| first-name | string | null: false |
+| family-name| string | null: false |
+| email      | string | null: false |
+| password   | string | null: false |
+| country    | string | null: false |
+| prefecture | string | null: false |
+| city       | string | null: false |
 
 ### Association
-
-- belongs_to :user
-- belongs_to :item
+- has_many : user
+- has_many : item

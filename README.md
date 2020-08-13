@@ -46,11 +46,11 @@ Things you may want to cover:
 | item             | string | null: false |
 | price            | string | null: false |
 | photo            | string | null: false |
-| status           | string | null: false |
-| category         | string | null: false |
-| delivery-fee     | string | null: false |
-| shipping-origin  | string | null: false |
-| days             | string | null: false |
+### | status           | string | null: false | 必要ないのか？？
+### | category         | string | null: false | 必要ないのか？？
+### | delivery-fee     | string | null: false | 必要ないのか？？
+### | shipping-origin  | string | null: false | 必要ないのか？？
+### | days             | string | null: false | 必要ないのか？？
 
 
 ### Association
@@ -75,11 +75,11 @@ Things you may want to cover:
 | ----------  | ------  | ------------------------------ |
 | country     | integer | null: false                    |
 | prefecture  | integer | null: false                    |
-| city        | integer | null: false                    |
-| postal-code | integer | null: false                    |
-| building    | integer | null: false                    |
-| adress      | integer | null: false                    |
-| phon-number | integer | null: false                    |
+### | city        | integer | null: false                    |
+| postal-code | string  | null: false                    |
+| building    | string  | null: false                    |
+| adress      | string  | null: false                    |
+| phon-number | string  | null: false                    |
 | items_users | integer | null: false, foreign_key: true |
 
 

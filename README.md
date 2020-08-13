@@ -38,8 +38,8 @@ Things you may want to cover:
 | born                 | date   | null: false |
 
 ### Association
-- has_many :item
-- has_many :buy
+- has_many :items
+- has_many :buys
 
 ## items テーブル 商品の情報を保存するデータ
 
@@ -57,21 +57,22 @@ Things you may want to cover:
 
 
 ### Association
-- has_many :user
+- belongs_to :user
 - has_one :buy
 
 
 
 ## adress テーブル　購入者情報を保存するデータ
 
-| Column      | Type    | Options                        |
-| ----------  | ------  | ------------------------------ |
-| prefecture  | integer | null: false                    |
-| city        | string  | null: false                    |
-| postal-code | string  | null: false                    |
-| building    | string  | null: false                    |
-| adress      | string  | null: false                    |
-| phon-number | string  | null: false                    |
+| Column      | Type       | Options     |
+| ----------  | --------   | ------------|
+| prefecture  | integer    |             |
+| city        | string     |             |
+| postal-code | string     |             |
+| building    | string     |             |
+| adress      | string     | null: false |
+| phon-number | string     | null: false |
+| buy         | references | null: false, foreign_key: true |
 
 
 ### Association
@@ -81,7 +82,6 @@ Things you may want to cover:
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| adress | references | null: false, foreign_key: true |
 | item   | references | null: false, foreign_key: true |
 | user   | references | null: false, foreign_key: true |
 

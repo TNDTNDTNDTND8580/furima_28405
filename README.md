@@ -35,10 +35,12 @@ Things you may want to cover:
 | nickname             | string | null: false |
 | email                | string | null: false |
 | password             | string | null: false |
-| born                 | string | null: false |
+| born                 | date   | null: false |
 
 ### Association
 - has_many :item
+- has_many :adress
+- has_many :buy
 
 ## items テーブル 商品の情報を保存するデータ
 
@@ -52,11 +54,13 @@ Things you may want to cover:
 | delivery-fee     | integer | null: false |
 | shipping-origin  | integer | null: false |
 | days             | integer | null: false |
+| users            | integer | null: false, foreign_key: true |
 
 
 ### Association
 - has_many :user
 - has_many :adress
+- has_many :buy
 
 
 ### items_users
@@ -74,14 +78,27 @@ Things you may want to cover:
 
 | Column      | Type    | Options                        |
 | ----------  | ------  | ------------------------------ |
-| prefecture  | string  | null: false                    |
-| city        | string  | null: false                    |
-| postal-code | string  | null: false                    |
-| building    | string  | null: false                    |
-| adress      | string  | null: false                    |
+| prefecture  | integer | null: false                    |
+| city        | integer | null: false                    |
+| postal-code | integer | null: false                    |
+| building    | integer | null: false                    |
+| adress      | integer | null: false                    |
 | phon-number | string  | null: false                    |
 | items_users | integer | null: false, foreign_key: true |
 
 
 ### Association
 - has_many : item
+- has_many : buy
+
+## buy テーブル　商品の購入管理を行うテーブル
+
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| adress | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
+| user   | references | null: false, foreign_key: true |
+
+- has_many :item
+- has_many :adress
+- has_many :user

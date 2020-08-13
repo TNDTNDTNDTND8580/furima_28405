@@ -35,22 +35,23 @@ Things you may want to cover:
 | nickname             | string | null: false |
 | email                | string | null: false |
 | password             | string | null: false |
+| born                 | string | null: false |
 
 ### Association
 - has_many :item
 
 ## items テーブル 商品の情報を保存するデータ
 
-| Column           | Type   | Options     |
-| ---------------  | ------ | ----------- |
-| item             | string | null: false |
-| price            | string | null: false |
-| photo            | string | null: false |
-### | status           | string | null: false | 必要ないのか？？
-### | category         | string | null: false | 必要ないのか？？
-### | delivery-fee     | string | null: false | 必要ないのか？？
-### | shipping-origin  | string | null: false | 必要ないのか？？
-### | days             | string | null: false | 必要ないのか？？
+| Column           | Type    | Options     |
+| ---------------  | ------- | ----------- |
+| item             | string  | null: false |
+| price            | string  | null: false |
+| photo            | string  | null: false |
+| status           | integer | null: false |
+| category         | integer | null: false |
+| delivery-fee     | integer | null: false |
+| shipping-origin  | integer | null: false |
+| days             | integer | null: false |
 
 
 ### Association
@@ -73,9 +74,8 @@ Things you may want to cover:
 
 | Column      | Type    | Options                        |
 | ----------  | ------  | ------------------------------ |
-| country     | integer | null: false                    |
-| prefecture  | integer | null: false                    |
-### | city        | integer | null: false                    |
+| prefecture  | string  | null: false                    |
+| city        | string  | null: false                    |
 | postal-code | string  | null: false                    |
 | building    | string  | null: false                    |
 | adress      | string  | null: false                    |

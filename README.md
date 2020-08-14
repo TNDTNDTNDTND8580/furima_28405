@@ -76,7 +76,7 @@ Things you may want to cover:
 
 
 ### Association
-- has_one : buy
+- belongs_to :buy
 
 ## buy テーブル　商品の購入管理を行うテーブル
 
@@ -86,5 +86,5 @@ Things you may want to cover:
 | user   | references | null: false, foreign_key: true |
 
 - belongs_to :item
-- belongs_to :adress
+- has_one :address
 - belongs_to :user

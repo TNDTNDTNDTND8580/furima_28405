@@ -43,17 +43,19 @@ Things you may want to cover:
 
 ## items テーブル 商品の情報を保存するデータ
 
-| Column           | Type    | Options     |
-| ---------------  | ------- | ----------- |
-| item             | string  | null: false |
-| price            | string  | null: false |
-| photo            | string  | null: false |
-| status           | integer | null: false |
-| category         | integer | null: false |
-| delivery-fee     | integer | null: false |
-| shipping-origin  | integer | null: false |
-| days             | integer | null: false |
-| user_id          | integer | null: false, foreign_key: true |
+
+| Column               | Type    | Options     |
+| ---------------      | ------- | ----------- |
+| item                 | string  | null: false |
+| item                 | string  | null: false |
+| introduce            | string  | null: false |
+| category             | integer | null: false |
+| condition            | integer | null: false |
+| delivery-fee         | integer | null: false |
+| area                 | string  | null: false |
+| days_until_shipping  | integer | null: false |
+| price                | integer | null: false |
+| user_id              | integer | null: false, foreign_key: true |
 
 
 ### Association

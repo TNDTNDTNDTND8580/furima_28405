@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
   end
 
   def index
+    @items = Item.includes(:user)
   end
 
   def new

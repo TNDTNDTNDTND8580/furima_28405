@@ -2,13 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   let(:image) { FactoryBot.create(:image) }
-  #pending "add some examples to (or delete) #{__FILE__}"
   before do
     @item = FactoryBot.build(:item)
     @item.image = fixture_file_upload('test_image.png')
   end
   describe '商品出品情報' do
-    context 'cant save' do
+    context 'can save' do
       it '画像は1枚必須であること' do
         @item.image = nil
         @item.valid?
@@ -54,6 +53,9 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not a number")
       end
+      
+    end
+    context 'cant save' do
       it "商品価格が300円未満ではないこと" do
         @item.price = 299
         @item.valid?

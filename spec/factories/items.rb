@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :item do
-    #photo                  {""}
     item                   {"オムレツ"}
     introduce              {"ケチャップ付き"}
     category_id            {1}

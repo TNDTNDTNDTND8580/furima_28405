@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :move_to_index, except: [:index, :show, :edit, :destroy, :pay]
+  before_action :authenticate_user!, only: [:edit, :destroy, :pay]
   def login_check
     unless user_signed_in?
       flash[:alert] = "ログインしてください"
@@ -25,10 +27,27 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    
+  end
+
+  def destroy
+    
+  end
+
+  def pay
   end
 
   def show
+    @item = Item.find(params[:id])
   end
+  
+  def move_to_index
+    unless user_signed_in?
+      redirect_to action: :index
+    end
+  end
+
+
 
   private
   def item_params

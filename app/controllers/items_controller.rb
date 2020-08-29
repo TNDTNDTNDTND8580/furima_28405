@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show, :edit, :destroy, :pay]
-  before_action :authenticate_user!, only: [:edit, :destroy, :pay]
+  # before_action :move_to_index, except: [:index, :show, :edit, :destroy, :pay]
+  before_action :authenticate_user!, only: [:edit, :destroy, :new, :create, :pay]
   def login_check
     unless user_signed_in?
       flash[:alert] = "ログインしてください"
@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    
   end
 
   def create
@@ -39,6 +40,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @user = User.find(params[:id])
   end
   
   def move_to_index
@@ -47,11 +49,17 @@ class ItemsController < ApplicationController
     end
   end
 
-
-
   private
   def item_params
     params.require(:item).permit(:item, :name, :introduce, :image, :category_id, :condition_id, :delivery_fee_id, :area_id, :days_until_shipping_id, :price).merge(user_id: current_user.id)
   end
-
+  def ensure_current_user
+    item = Item.find(params[:id])
+    if item.user_id != current_user.id
+      redirect_to action: :index
+    end
+  end
+  def set_item
+    @item = Item.find(params[:id])
+  end
 end

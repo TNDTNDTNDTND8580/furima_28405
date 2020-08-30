@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   # before_action :move_to_index, except: [:index, :show, :edit, :destroy, :pay]
   before_action :authenticate_user!, only: [:edit, :destroy, :new, :create, :pay]
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
   def login_check
     unless user_signed_in?
       flash[:alert] = "ログインしてください"
@@ -40,6 +40,12 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    if @item.destroy
+       redirect_to root_path, notice: '削除されました'
+    else
+      flash.now[:alert] = '削除できませんでした'
+      render 'show'
+    end
   end
 
   def pay

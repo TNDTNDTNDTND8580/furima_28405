@@ -5,9 +5,9 @@ class TransactionsController < ApplicationController
     @items = Item.includes(:user).order("created_at DESC")
   end
   def correct_user
-    @items = current_user.items.find_by(id: params[:id])
-      unless @items
-        redirect_to root_url
-      end
+    @item = Item.find(params[:item_id])
+    if @item.user_id == current_user.id
+      redirect_to root_path
+    end
   end
 end

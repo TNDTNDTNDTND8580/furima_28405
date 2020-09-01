@@ -64,7 +64,7 @@ Things you may want to cover:
 
 
 
-## adress テーブル　購入者情報を保存するデータ
+## adress テーブル 購入者情報を保存するデータ
 
 | Column      | Type       | Options     |
 | ----------  | --------   | ------------|
@@ -74,13 +74,13 @@ Things you may want to cover:
 | building    | string     |             |
 | adress      | string     | null: false |
 | phon-number | string     | null: false |
-| buy         | references | null: false, foreign_key: true |
+| buy | references | null: false, foreign_key: true |
 
 
 ### Association
 - belongs_to :buy
 
-## buy テーブル　商品の購入管理を行うテーブル
+## buy テーブル 商品の購入管理を行うテーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |

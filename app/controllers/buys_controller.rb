@@ -1,9 +1,26 @@
 class BuysController < ApplicationController
   before_action :authenticate_user!, only: :index
   before_action :correct_user, only: :index
+  before_action :set_item, only: [:index, :create]
+
   def index
-    @item = Item.find(params[:item_id])
     @purchase = AdressBuy.new
+  end
+
+  def create
+    @purchase = AdressBuy.new(buy_params)
+    if @purchase.valid?
+      pay_item
+      @purchase.save
+      return redirect_to root_path
+    else
+      render 'index'
+    endf
+  end
+
+  private
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
   def correct_user
@@ -12,20 +29,6 @@ class BuysController < ApplicationController
       redirect_to root_path
     end
   end
-
-  def create
-    @item = Item.find(params[:item_id])
-    @purchase = AdressBuy.new(buy_params)
-    if @purchase.valid?
-      pay_item
-      @purchase.save
-      return redirect_to root_path
-    else
-      render 'index'
-    end
-  end
-
-  private
 
   def buy_params
     params.permit(:area_id, :token, :item_id, :prefecture, :city, :postal_code, :building, :adress, :phon_number).merge(user_id: current_user.id)

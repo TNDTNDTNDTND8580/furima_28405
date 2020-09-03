@@ -15,7 +15,7 @@ class BuysController < ApplicationController
       return redirect_to root_path
     else
       render 'index'
-    endf
+    end
   end
 
   private

@@ -4,8 +4,8 @@ class AdressBuy
 
   attr_accessor :user_id,:item_id, :prefecture, :city, :postal_code, :building, :adress, :phon_number, :area_id, :token
 
-  # validates :phon_number, presence: true, format: {/\A(((0(\d{1}[-(]?\d{4}|\d{2}[-(]?\d{3}|\d{3}[-(]?\d{2}|\d{4}[-(]?\d{1}|[5789]0[-(]?\d{4})[-)]?)|\d{1,4}\-?)\d{4}|0120[-(]?\d{3}[-)]?\d{3})\z/}
-  # validates :postal_code, presence: true, format: {/\A\d{3}[-]\d{4}\z/}
+  validates :phon_number, presence: true, format: { with: /\A(((0(\d{1}[-(]?\d{4}|\d{2}[-(]?\d{3}|\d{3}[-(]?\d{2}|\d{4}[-(]?\d{1}|[5789]0[-(]?\d{4})[-)]?)|\d{1,4}\-?)\d{4}|0120[-(]?\d{3}[-)]?\d{3})\z/}
+  validates :postal_code, presence: true, format: { with: /\A\d{3}-?d{4}\z/}
   with_options presence: true do
     validates :area_id
     validates :city
